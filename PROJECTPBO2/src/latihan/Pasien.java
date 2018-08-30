@@ -18,7 +18,7 @@ public class Pasien {
         private String alamat;
         private String nomorRekamMedis;
         private String tempatLahir;
-        private int tanggalLahir;
+        private Date tanggalLahir;
         private int bulanLahir;
         private int tahunLahir;
 
@@ -77,7 +77,7 @@ public class Pasien {
 
     
      public void setTanggalLahir(int tahun, int bulan, int tanggal) {
-        tanggalLahir = new int(tahun-1900,bulan-1,tanggal);
+        tanggalLahir = new Date(tahun-1900,bulan-1,tanggal);
     }
     
     public int getUsia(){
