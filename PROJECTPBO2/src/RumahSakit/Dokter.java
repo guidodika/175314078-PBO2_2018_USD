@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package latihan;
+package RumahSakit;
 
 /**
  *
@@ -14,7 +14,7 @@ public class Dokter {
     private String nama;
     private String alamat;
     private String tempatLahir;
-    private String tanggalLahir;
+    private int tanggalLahir;
     
     public Dokter(){
         
@@ -31,8 +31,12 @@ public class Dokter {
     /**
      * @param nomorPegawai the nomorPegawai to set
      */
-    public void setNomorPegawai(String nomorPegawai) {
-        this.nomorPegawai = nomorPegawai;
+    public void setNomorPegawai(String nomorPegawai) throws Exception{
+    if (nomorPegawai.length() == 5) {
+            this.nomorPegawai = (nomorPegawai + nama.substring(0, 3));
+        }else {
+            throw new Exception("Format Tidak Sesuai");
+        }
     }
 
     /**
@@ -80,15 +84,26 @@ public class Dokter {
     /**
      * @return the tanggalLahir
      */
-    public String getTanggalLahir() {
+    public int getTanggalLahir() {
         return tanggalLahir;
     }
 
     /**
      * @param tanggalLahir the tanggalLahir to set
      */
-    public void setTanggalLahir(String tanggalLahir) {
-        this.tanggalLahir = tanggalLahir;
+    public void setTanggalLahir(int tanggalLahir) throws Exception
+    {
+     if (tanggalLahir > 0) {
+            if (tanggalLahir <= 31) {
+                this.tanggalLahir = tanggalLahir;
+            } else {
+                throw new Exception("tidak ada tanggal lebih dari 31,\n pastikan tanggal benar");
+            }
+        } else {
+            throw new Exception("tidak ada tanggal 0,\n pastikan tanggal benar");
+        }
+}
+        
     }
     
     

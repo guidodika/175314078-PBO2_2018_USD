@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package latihan;
+package RumahSakit;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -18,7 +18,7 @@ public class Pasien {
         private String alamat;
         private String nomorRekamMedis;
         private String tempatLahir;
-        private Date tanggalLahir;
+        private int tanggalLahir;
         private int bulanLahir;
         private int tahunLahir;
 
@@ -26,6 +26,7 @@ public class Pasien {
             this.nama = nama;
           
         }
+
     /**
      * @return the nama
      */
@@ -55,6 +56,25 @@ public class Pasien {
     }
 
     /**
+     * @return the nomorRekamMedis
+     */
+    public String getNomorRekamMedis() {
+        return nomorRekamMedis;
+    }
+
+    /**
+     * @param nomorRekamMedis the nomorRekamMedis to set
+     */
+    public void setNomorRekamMedis(String nomorRekamMedis) throws Exception
+    {
+        if (nomorRekamMedis.length() <= 11 && nomorRekamMedis.length() >= 6 ) {
+            this.nomorRekamMedis = nomorRekamMedis;
+        } else {
+            throw new Exception("Nomor rekam Medis Salah,\n maksimal 11 karakter dan minimal 6 karakter");
+}
+    }
+
+    /**
      * @return the tempatLahir
      */
     public String getTempatLahir() {
@@ -71,35 +91,21 @@ public class Pasien {
     /**
      * @return the tanggalLahir
      */
-    public Date getTanggalLahir() {
+    public int getTanggalLahir() {
         return tanggalLahir;
     }
 
-    
-     public void setTanggalLahir(int tahun, int bulan, int tanggal) {
-        tanggalLahir = new Date(tahun-1900,bulan-1,tanggal);
-    }
-    
-    public int getUsia(){
-        Date today = new Date();
-        return today.getYear() - tanggalLahir.getYear();
-    }
-
     /**
-     * @return the nomorRekamMedis
+     * @param tanggalLahir the tanggalLahir to set
      */
-    public String getNomorRekamMedis() {
-        return nomorRekamMedis;
-    }
-
-    /**
-     * @param nomorRekamMedis the nomorRekamMedis to set
-     */
-    public void setNomorRekamMedis(String nomorRekamMedis) {
-        this.nomorRekamMedis = nomorRekamMedis;
+    public void setTanggalLahir(int tanggalLahir) throws Exception {
+    if(tanggalLahir>0 && tanggalLahir<=31)
+        this.tanggalLahir = tanggalLahir;
+    else 
+         throw new Exception("Invalid val");
         
+    
     }
-
     /**
      * @return the bulanLahir
      */
@@ -110,8 +116,11 @@ public class Pasien {
     /**
      * @param bulanLahir the bulanLahir to set
      */
-    public void setBulanLahir(int bulanLahir) {
-        this.bulanLahir = bulanLahir;
+    public void setBulanLahir(int bulanLahir) throws Exception {
+        if(bulanLahir>0 && bulanLahir<13)
+             this.bulanLahir = bulanLahir;
+        else 
+         throw new Exception("Invalid val");
     }
 
     /**
@@ -124,8 +133,12 @@ public class Pasien {
     /**
      * @param tahunLahir the tahunLahir to set
      */
-    public void setTahunLahir(int tahunLahir) {
-        this.tahunLahir = tahunLahir;
+    public void setTahunLahir(int tahunLahir) throws Exception {
+         if(tahunLahir>0)
+             this.tahunLahir = tahunLahir;
+        else 
+         throw new Exception("Invalid val");
     }
+   
 
 }
