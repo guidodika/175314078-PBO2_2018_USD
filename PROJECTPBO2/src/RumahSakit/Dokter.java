@@ -15,6 +15,8 @@ public class Dokter {
     private String alamat;
     private String tempatLahir;
     private int tanggalLahir;
+    private int bulanLahir;
+    private int tahunLahir;
     
     public Dokter(){
         
@@ -103,9 +105,43 @@ public class Dokter {
             throw new Exception("tidak ada tanggal 0,\n pastikan tanggal benar");
         }
 }
+     /**
+     * @return the bulanLahir
+     */
+    public int getBulanLahir() {
+        return bulanLahir;
+    }
+
+    /**
+     * @param bulanLahir the bulanLahir to set
+     */
+    public void setBulanLahir(int bulanLahir) throws Exception {
+        if(bulanLahir>0 && bulanLahir<13)
+             this.bulanLahir = bulanLahir;
+        else 
+         throw new Exception("Invalid val");
+    }
+
+    /**
+     * @return the tahunLahir
+     */
+    public int getTahunLahir() {
+        return tahunLahir;
+    }
+
+    /**
+     * @param tahunLahir the tahunLahir to set
+     */
+    public void setTahunLahir(int tahunLahir) throws Exception {
+         if(tahunLahir>0)
+             this.tahunLahir = tahunLahir;
+        else 
+         throw new Exception("Invalid val");
+    }
+   
         
     }
     
     
-    }
+    
 
