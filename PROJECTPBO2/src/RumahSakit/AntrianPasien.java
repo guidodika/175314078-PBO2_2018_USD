@@ -36,7 +36,7 @@ public class AntrianPasien {
     
     
     public Pasien panggilPasien(int nomorAntrian){
-    
+    return null;
     }
 
     /**
