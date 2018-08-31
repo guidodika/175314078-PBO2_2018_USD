@@ -35,9 +35,11 @@ public class AntrianPasien {
     }
     
     
-    public Pasien panggilPasien(int nomorAntrian){
-    return null;
-    }
+//    public Pasien panggilPasien(int nomorAntrian){
+////        if(nomorAntrian < JUM_MAX_PASIEN){
+////            return 
+////        }
+////    }
 
     /**
      * @return the tanggalAntrian
