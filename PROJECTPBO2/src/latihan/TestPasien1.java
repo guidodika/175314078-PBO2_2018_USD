@@ -17,9 +17,9 @@ import java.util.Date;
 public class TestPasien1 {
     public static void main(String[] args) {
         Pasien puspa = new Pasien("Puspa");
-       puspa.setTanggalLahir(1978,8,12);
+//       puspa.setTanggalLahir(1978,8,12);
       
-        System.out.println("Umur = "+puspa.getUsia());
+//        System.out.println("Umur = "+puspa.getUsia());
          
     }
 }
