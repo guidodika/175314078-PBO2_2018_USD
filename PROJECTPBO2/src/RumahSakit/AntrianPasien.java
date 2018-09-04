@@ -5,6 +5,8 @@
  */
 package RumahSakit;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author jarkom
@@ -16,8 +18,11 @@ public class AntrianPasien {
     private int bulanAntrian;
     private int tahunLahir;
     private int nomorAntrian=0;
-    private final int JUM_MAX_PASIEN=50;
-    private Pasien[] daftarPasien = new Pasien[JUM_MAX_PASIEN];
+    private String namaKlinik;
+    private final int JUM_MAX_PASIEN=10;
+    private ArrayList<Pasien> daftarPasien = new ArrayList<Pasien>();
+    
+    
     
     /**Fungsi ini digunakan untuk mendaftar pasien baru di nomor antrian
      * 
@@ -27,19 +32,22 @@ public class AntrianPasien {
     public void mendaftar(Pasien pasien) throws Exception{
         //nomor antrian dibandingkan dengan jumlah maksimal pasien//
         if(nomorAntrian < JUM_MAX_PASIEN){
-        daftarPasien[nomorAntrian]=pasien;
+        getDaftarPasien().add(pasien);
         nomorAntrian++;
+        
         } else {
-            throw new Exception("antrian penuh");
+            throw new Exception("Antrian Penuh");
         }
     }
     
-    
+ 
 //    public Pasien panggilPasien(int nomorAntrian){
-////        if(nomorAntrian < JUM_MAX_PASIEN){
-////            return 
-////        }
-////    }
+//        if(nomorAntrian==daftarPasien[nomorAntrian]){
+//            
+//        
+//        }
+//    }
+    
 
     /**
      * @return the tanggalAntrian
@@ -82,6 +90,39 @@ public class AntrianPasien {
     public void setTahunLahir(int tahunLahir) {
         this.tahunLahir = tahunLahir;
     }
+
+    /**
+     * @return the namaKlinik
+     */
+    public String getNamaKlinik() {
+        return namaKlinik;
+    }
+
+    /**
+     * @param namaKlinik the namaKlinik to set
+     */
+    public void setNamaKlinik(String namaKlinik) {
+        this.namaKlinik = namaKlinik;
+    }
+
+    /**
+     * @return the daftarPasien
+     */
+    public ArrayList<Pasien> getDaftarPasien() {
+        return daftarPasien;
+    }
+
+    /**
+     * @param daftarPasien the daftarPasien to set
+     */
+    public void setDaftarPasien(ArrayList<Pasien> daftarPasien) {
+        this.daftarPasien = daftarPasien;
+    }
+
+    /**
+     * @return the daftarPasien
+     */
+    
     
     
 }
