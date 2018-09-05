@@ -18,5 +18,7 @@ public class TestView {
         test.setSize(300,400);
         test.setTitle("Hello World");
         test.setVisible(true);
+        
+        
     }
 }
