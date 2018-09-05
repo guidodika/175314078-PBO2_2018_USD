@@ -60,7 +60,7 @@ public class AntrianPasien {
         return tanggalAntrian;
     }
 
-    /**Fungsi ini digunakan untuk mengatur method tanggal antrian
+    /**Fungsi ini digunakan untuk mengatur tanggal antrian
      * @param tanggalAntrian the tanggalAntrian to set
      */
     public void setTanggalAntrian(int tanggalAntrian) {

@@ -16,6 +16,8 @@ import javax.swing.JTextField;
  */
 public class LatihanDialog extends JDialog {
 
+        
+    
     private JLabel namaLabel;
     private JTextField namaText;
 
@@ -34,6 +36,17 @@ public class LatihanDialog extends JDialog {
         namaLabel = new JLabel("Nama");
         namaLabel.setBounds(50, 250, 50, 10);
         this.add(namaLabel);
+        
+        namaLabel = new JLabel("OK");
+        namaLabel.setBounds(100, 250, 100, 10);
+        this.add(namaLabel);
+        
+        namaText = new JTextField();
+        namaText.setBounds(50, 400, 50, 30);
+        
+        
+        
     }
 }
+
 
