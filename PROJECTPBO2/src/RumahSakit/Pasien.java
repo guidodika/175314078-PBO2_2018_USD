@@ -31,35 +31,35 @@ public class Pasien {
           
         }
 
-    /**
+    /**Fungsi ini digunakan untuk memanggil nama pasien
      * @return the nama
      */
     public String getNama() {
         return nama;
     }
 
-    /**
+    /**Fungsi ini digunakan untuk mengatur nama pasien
      * @param nama the nama to set
      */
     public void setNama(String nama) {
         this.nama = nama;
     }
 
-    /**
+    /**Fungsi ini digunakan untuk memanggil alamat pasien
      * @return the alamat
      */
     public String getAlamat() {
         return alamat;
     }
 
-    /**
+    /**Fungsi ini digunakan untuk mengatur alamat pasien
      * @param alamat the alamat to set
      */
     public void setAlamat(String alamat) {
         this.alamat = alamat;
     }
 
-    /**
+    /**Fungsi ini digunakan untuk memanggil nomor rekam medis
      * @return the nomorRekamMedis
      */
     public String getNomorRekamMedis() {
@@ -81,21 +81,21 @@ public class Pasien {
 }
     }
 
-    /**
+    /**Fungsi ini digunakan untuk memanggil tempat lahir pasien
      * @return the tempatLahir
      */
     public String getTempatLahir() {
         return tempatLahir;
     }
 
-    /**
+    /**Fungsi ini digunakan untuk mengatur tempat lahir pasien
      * @param tempatLahir the tempatLahir to set
      */
     public void setTempatLahir(String tempatLahir) {
         this.tempatLahir = tempatLahir;
     }
 
-    /**
+    /**Fungsi ini digunakan untuk memanggil tanggal lahir pasien
      * @return the tanggalLahir
      */
     public int getTanggalLahir() {
@@ -120,7 +120,7 @@ public class Pasien {
         }
     
     }
-    /**
+    /**Fungsi ini digunakan untuk memanggil bulan lahir pasien
      * @return the bulanLahir
      */
     public int getBulanLahir() {
@@ -143,7 +143,7 @@ public class Pasien {
             throw new Exception("SALAH, /ntidak ada bulan lahir ke-0 atau kurang dari 0");
     }
 
-    /**
+    /**Fungsi ini digunakan untuk memanggil tahun lahir pasien
      * @return the tahunLahir
      */
     public int getTahunLahir() {

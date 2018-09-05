@@ -40,79 +40,83 @@ public class AntrianPasien {
         }
     }
     
+    /**Fungsi ini digunakan untuk memanggil pasien sesuai nomor antrian pasien
+     * 
+     * @param nomorAntrian
+     * @return 
+     */
  
-//    public Pasien panggilPasien(int nomorAntrian){
-//        if(nomorAntrian==daftarPasien[nomorAntrian]){
-//            
-//        
-//        }
-//    }
-    
+    public Pasien panggilPasien(int nomorAntrian){
+        
+        return daftarPasien[nomorAntrian];    
+        
+        }
 
-    /**
+  
+    /**Fungsi ini digunakan untuk memanggil tanggal antrian
      * @return the tanggalAntrian
      */
     public int getTanggalAntrian() {
         return tanggalAntrian;
     }
 
-    /**
+    /**Fungsi ini digunakan untuk mengatur method tanggal antrian
      * @param tanggalAntrian the tanggalAntrian to set
      */
     public void setTanggalAntrian(int tanggalAntrian) {
         this.tanggalAntrian = tanggalAntrian;
     }
 
-    /**
+    /**Fungsi ini digunakan untuk memanggil bulan antrian
      * @return the bulanAntrian
      */
     public int getBulanAntrian() {
         return bulanAntrian;
     }
 
-    /**
+    /**Fungsi ini digunakan untuk mengatur bulan antrian
      * @param bulanAntrian the bulanAntrian to set
      */
     public void setBulanAntrian(int bulanAntrian) {
         this.bulanAntrian = bulanAntrian;
     }
 
-    /**
+    /**Fungsi ini digunakan untuk memanggil tahun lahir
      * @return the tahunLahir
      */
     public int getTahunLahir() {
         return tahunLahir;
     }
 
-    /**
+    /**Fungsi ini digunakan untuk mengatur tahun lahir 
      * @param tahunLahir the tahunLahir to set
      */
     public void setTahunLahir(int tahunLahir) {
         this.tahunLahir = tahunLahir;
     }
 
-    /**
+    /**Fungsi ini digunakan untuk memanggil nama klinik
      * @return the namaKlinik
      */
     public String getNamaKlinik() {
         return namaKlinik;
     }
 
-    /**
+    /**Fungsi ini digunakan untuk mengatur nama klinik
      * @param namaKlinik the namaKlinik to set
      */
     public void setNamaKlinik(String namaKlinik) {
         this.namaKlinik = namaKlinik;
     }
 
-    /**
+    /**Fungsi ini digunakan untuk memanggil daftar pasien
      * @return the daftarPasien
      */
     public ArrayList<Pasien> getDaftarPasien() {
         return daftarPasien;
     }
 
-    /**
+    /**Fungsi ini digunakan untuk mengatur daftar pasien
      * @param daftarPasien the daftarPasien to set
      */
     public void setDaftarPasien(ArrayList<Pasien> daftarPasien) {

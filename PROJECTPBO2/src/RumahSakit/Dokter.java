@@ -47,49 +47,49 @@ public class Dokter {
         }
     }
 
-    /**
+    /**Fungsi ini digunakan untuk memanggil nama dokter
      * @return the nama
      */
     public String getNama() {
         return nama;
     }
 
-    /**
+    /**Fungsi ini digunakan untuk mengatur nama dokter
      * @param nama the nama to set
      */
     public void setNama(String nama) {
         this.nama = nama;
     }
 
-    /**
+    /**Fungsi ini digunakan untuk memanggil alamat dokter
      * @return the alamat
      */
     public String getAlamat() {
         return alamat;
     }
 
-    /**
+    /**Fungsi ini digunakan untuk mengatur alamat dokter
      * @param alamat the alamat to set
      */
     public void setAlamat(String alamat) {
         this.alamat = alamat;
     }
 
-    /**
+    /**Fungsi ini digunakan untuk memanggil tempat lahir dokter
      * @return the tempatLahir
      */
     public String getTempatLahir() {
         return tempatLahir;
     }
 
-    /**
+    /**Fungsi ini digunakan untuk mengatur tempat lahir dokter
      * @param tempatLahir the tempatLahir to set
      */
     public void setTempatLahir(String tempatLahir) {
         this.tempatLahir = tempatLahir;
     }
 
-    /**
+    /**Fungsi ini digunakan untuk memanggil tanggal lahir dokter
      * @return the tanggalLahir
      */
     public int getTanggalLahir() {
@@ -114,7 +114,7 @@ public class Dokter {
             throw new Exception("SALAH,\ntidak ada tanggal 0");
         }
 }
-     /**
+     /**Fungsi ini digunakan untuk memanggil bulan lahir dokter
      * @return the bulanLahir
      */
     public int getBulanLahir() {
@@ -137,7 +137,7 @@ public class Dokter {
             throw new Exception("SALAH, /ntidak ada bulan lahir ke-0 atau kurang dari 0");
     }
 
-    /**
+    /**Fungsi ini digunakan untuk memanggil tahun lahir dokter
      * @return the tahunLahir
      */
     public int getTahunLahir() {
