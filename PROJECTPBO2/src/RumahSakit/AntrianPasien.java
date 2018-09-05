@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author jarkom
+ * @author My Computer
  */
 public class AntrianPasien {
     
@@ -48,7 +48,7 @@ public class AntrianPasien {
  
     public Pasien panggilPasien(int nomorAntrian){
         
-        return daftarPasien[nomorAntrian];    
+        return daftarPasien.get(nomorAntrian);    
         
         }
 

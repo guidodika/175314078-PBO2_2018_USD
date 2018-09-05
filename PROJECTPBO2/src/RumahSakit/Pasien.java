@@ -11,7 +11,7 @@ import java.util.Date;
 
 /**
  *
- * @author admin
+ * @author My Computer
  */
 public class Pasien {
         private String nama;

@@ -14,13 +14,15 @@ import RumahSakit.Pasien;
  */
 public class test {
     public static void main(String[] args) throws Exception {
-        Pasien test1 = new Pasien("Guido");
-        Pasien test2 = new Pasien("Dika");
+        Pasien psn1 = new Pasien("Guido");
+        
+        Pasien psn2 = new Pasien("Dika");
+        
         
         
         AntrianPasien antri1 = new AntrianPasien();
-        antri1.mendaftar(test1);
-        antri1.mendaftar(test2);
+        antri1.mendaftar(psn1);
+        antri1.mendaftar(psn2);
         
         for (int i = 0; i < antri1.getDaftarPasien().size(); i++) {
             System.out.println(antri1.getDaftarPasien().get(i).getNama());
