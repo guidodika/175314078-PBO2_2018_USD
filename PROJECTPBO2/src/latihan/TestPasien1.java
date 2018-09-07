@@ -6,9 +6,10 @@
 
 package latihan;
 
-import RumahSakit.Pasien;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import model.Pasien;
 
 /**
  *

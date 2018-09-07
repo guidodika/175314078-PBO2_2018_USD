@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package RumahSakit;
+package model;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

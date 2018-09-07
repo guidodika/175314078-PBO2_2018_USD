@@ -3,16 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package TestRumahSakit;
+package Test;
 
-import RumahSakit.AntrianPasien;
-import RumahSakit.Pasien;
+import model.AntrianPasien;
+import model.Pasien;
 
 /**
  *
  * @author My Computer
  */
-public class test {
+public class testModel {
     public static void main(String[] args) throws Exception {
         Pasien psn1 = new Pasien("Guido");
         
