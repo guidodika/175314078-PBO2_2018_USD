@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 
 /**
  *
- * @author admin
+ * @author Guido Dika
  */
 public class TestView {
     public static void main(String[] args) {

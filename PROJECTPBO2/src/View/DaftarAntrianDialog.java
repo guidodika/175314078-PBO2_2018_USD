@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author user only
+ * @author Guido Dika
  */
 public class DaftarAntrianDialog extends JDialog {
 
@@ -40,24 +40,35 @@ public class DaftarAntrianDialog extends JDialog {
     public void init() {
         this.setLayout(null);
         
+        //buat judul label//
         judulLabel = new JLabel("Daftar Antrian Dialog");
+        /*untuk set posisi, lebar dan tinggi tulisan
+        aaa.setBounds(x, y, lebar, tinggi);
+        */
         judulLabel.setBounds(150, 20, 150, 15);
+        //agar dapat ditampilkan//
         this.add(judulLabel);
         
-        nomorRekamMedisLabel = new JLabel("Nomor Rekam Medis : ");
+        
+        nomorRekamMedisLabel = new JLabel("Nomor Rekam Medis  : ");
         nomorRekamMedisLabel.setBounds(20, 50, 250, 10);
         this.add(nomorRekamMedisLabel);
         
-        namaLabel = new JLabel("Nama: ");
-        namaLabel.setBounds(20, 90, 150, 10);
+        namaLabel = new JLabel("Nama                           : ");
+        namaLabel.setBounds(20, 90, 170, 10);
         this.add(namaLabel);
         
-        alamatLabel = new JLabel("Alamat: ");
-        alamatLabel.setBounds(20, 130, 150, 10);
+        alamatLabel = new JLabel("Alamat                         : ");
+        alamatLabel.setBounds(20, 130, 170, 10);
         this.add(alamatLabel);
         
+        // buat kolom tulisan untuk nomor rekam medis//
         nomorRekamMedisText = new JTextField();
+        /*untuk set posisi, lebar dan tinggi tulisan
+        aaa.setBounds(x, y, lebar, tinggi);
+        */
         nomorRekamMedisText.setBounds(180, 50, 110, 25);
+        //agar dapat ditampilkan//
         this.add(nomorRekamMedisText);
         
         namaText = new JTextField();
