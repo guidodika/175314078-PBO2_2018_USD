@@ -6,6 +6,7 @@
 package Test;
 
 import model.AntrianPasien;
+import model.Dokter;
 import model.Pasien;
 
 /**
@@ -15,14 +16,12 @@ import model.Pasien;
 public class testModel {
     public static void main(String[] args) throws Exception {
         Pasien psn1 = new Pasien("Guido");
-        
-        Pasien psn2 = new Pasien("Dika");
-        
-        
-        
+
+       Dokter dsn = new Dokter();
+       
         AntrianPasien antri1 = new AntrianPasien();
         antri1.mendaftar(psn1);
-        antri1.mendaftar(psn2);
+        
         
         for (int i = 0; i < antri1.getDaftarPasien().size(); i++) {
             System.out.println(antri1.getDaftarPasien().get(i).getNama());

@@ -163,5 +163,16 @@ public class Pasien {
          throw new Exception("SALAH, /ntidak ada tahun lahir 0 atau kurang dari 0");
     }
    
+    /**
+     * Membuat nomor rekam medis sesuai tanggal sekarang
+     * @return 
+     */
+    public String BuatRekamMedis() {
+        String nomorRekamMedis;
+        Date date = new Date();
+        SimpleDateFormat ft = new SimpleDateFormat("yyyyMMdd");
+        nomorRekamMedis = ft.format(date) + nama.substring(0, 3);
+        return nomorRekamMedis;
+}
 
 }
