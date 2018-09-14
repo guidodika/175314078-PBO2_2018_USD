@@ -15,17 +15,36 @@ import model.Pasien;
  */
 public class testModel {
     public static void main(String[] args) throws Exception {
-        Pasien psn1 = new Pasien("Guido");
-
-       Dokter dsn = new Dokter();
-       
-        AntrianPasien antri1 = new AntrianPasien();
-        antri1.mendaftar(psn1);
+        Pasien test = new Pasien(
+                "Puspa", // nama pasien
+                "Klaten", // alamat
+                "Medan", // tempat lahir
+                12, // tanggal lahir
+                01, // bulan lahir
+                1974, // tahun lahir
+                "19740112" // NIK
+        );
         
+        Pasien test1 = new Pasien(
+                "Budi", // nama pasien
+                "Klaten", // alamat
+                "Klaten", // tempat lahir
+                10, // tanggal lahir
+                01, // bulan lahir
+                1999, // tahun lahir
+                "19990110" // NIK
+        );
         
-        for (int i = 0; i < antri1.getDaftarPasien().size(); i++) {
-            System.out.println(antri1.getDaftarPasien().get(i).getNama());
+        Pasien.tambahPasienBaru(test);
+        Pasien.tambahPasienBaru(test1);
+        
+        for (int i = 0; i < Pasien.daftarPasienKlinik.size(); i++) {
+            System.out.println("Nama : "+Pasien.daftarPasienKlinik.get(i).getNama());
         }
+        
+        Pasien cari = Pasien.cariPasien("19990110");
+        System.out.println("Nama Hasil Pencarian = "+cari.getNama());
+}
     }
 }
 

@@ -6,8 +6,8 @@
 
 package Test;
 
-import View.DaftarAntrianDialog;
-import javax.swing.JFrame;
+import View.TambahPasienBaruDialog;
+
 
 /**
  *
@@ -15,7 +15,7 @@ import javax.swing.JFrame;
  */
 public class TestView {
     public static void main(String[] args) {
-        DaftarAntrianDialog test = new DaftarAntrianDialog();
+        TambahPasienBaruDialog test = new TambahPasienBaruDialog();
         test.setSize(500,800);
         test.setTitle("Daftar Antrian Pasien");
         test.setVisible(true);

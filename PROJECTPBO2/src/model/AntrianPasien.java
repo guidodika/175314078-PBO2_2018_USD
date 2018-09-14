@@ -21,7 +21,7 @@ public class AntrianPasien {
     private int nomorAntrian=0;
     private String namaKlinik;
     private final int JUM_MAX_PASIEN=10;
-    private ArrayList<Pasien> daftarPasien = new ArrayList<Pasien>();
+    private ArrayList<Pasien> daftarPasienAntri = new ArrayList<Pasien>();
     
     
     
@@ -33,7 +33,7 @@ public class AntrianPasien {
     public void mendaftar(Pasien pasien) throws Exception{
         //nomor antrian dibandingkan dengan jumlah maksimal pasien//
         if(nomorAntrian < JUM_MAX_PASIEN){
-        getDaftarPasien().add(pasien);
+        getDaftarPasienAntri().add(pasien);
         nomorAntrian++;
         
         } else {
@@ -49,7 +49,7 @@ public class AntrianPasien {
  
     public Pasien panggilPasien(int nomorAntrian){
         
-        return daftarPasien.get(nomorAntrian);    
+        return daftarPasienAntri.get(nomorAntrian);    
         
         }
 
@@ -113,15 +113,15 @@ public class AntrianPasien {
     /**Fungsi ini digunakan untuk memanggil daftar pasien
      * @return the daftarPasien
      */
-    public ArrayList<Pasien> getDaftarPasien() {
-        return daftarPasien;
+    public ArrayList<Pasien> getDaftarPasienAntri() {
+        return daftarPasienAntri;
     }
 
     /**Fungsi ini digunakan untuk mengatur daftar pasien
      * @param daftarPasien the daftarPasien to set
      */
-    public void setDaftarPasien(ArrayList<Pasien> daftarPasien) {
-        this.daftarPasien = daftarPasien;
+    public void setDaftarPasienAntri(ArrayList<Pasien> daftarPasien) {
+        this.daftarPasienAntri = daftarPasien;
     }
 
     /**

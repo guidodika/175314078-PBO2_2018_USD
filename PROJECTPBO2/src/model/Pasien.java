@@ -7,6 +7,7 @@
 package model;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -21,14 +22,51 @@ public class Pasien {
         private int tanggalLahir;
         private int bulanLahir;
         private int tahunLahir;
+        private String nik;
+        public ArrayList<Pasien> daftarPasienKlinik = new ArrayList<Pasien>();
+        private final int JUM_MAX_PASIEN=10;
+        private int jumlahPasien=0;
+        
 
         /**Merupakan kontruktor dari class Pasien dengan parameter nama
          * 
          * @param Pasien 
+         * 
+         * 
          */
-        public Pasien(String nama){
-            this.nama = nama;
+        
+   
+        public Pasien(String a, String b, String c, int d, 
+                        int e, int f, String g){
+           a = nama;
+           b = alamat;
+           c = tempatLahir;
+           d = tanggalLahir;
+           e = bulanLahir;
+           f = tahunLahir;
+           g = nik;
           
+        }
+
+    public Pasien() {
+         //To change body of generated methods, choose Tools | Templates.
+    }
+        
+        public void tambahPasienBaru(Pasien pasien) throws Exception{
+            if(jumlahPasien<JUM_MAX_PASIEN){
+                 pasien.getDaftarPasienKlinik().add(pasien);
+                 jumlahPasien++;
+            } else {
+                throw new Exception("Penuh");
+            }
+            
+           
+            
+        }
+        
+        public Pasien cariPasien(String noRekamMedis){
+            return daftarPasienKlinik.get(noRekamMedis);
+            
         }
 
     /**Fungsi ini digunakan untuk memanggil nama pasien
@@ -174,5 +212,33 @@ public class Pasien {
         nomorRekamMedis = ft.format(date) + nama.substring(0, 3);
         return nomorRekamMedis;
 }
+
+    /**
+     * @return the nik
+     */
+    public String getNik() {
+        return nik;
+    }
+
+    /**
+     * @param nik the nik to set
+     */
+    public void setNik(String nik) {
+        this.nik = nik;
+    }
+
+    /**
+     * @return the daftarPasienKlinik
+     */
+    public ArrayList<Pasien> getDaftarPasienKlinik() {
+        return daftarPasienKlinik;
+    }
+
+    /**
+     * @param daftarPasienKlinik the daftarPasienKlinik to set
+     */
+    public void setDaftarPasienKlinik(ArrayList<Pasien> daftarPasienKlinik) {
+        this.daftarPasienKlinik = daftarPasienKlinik;
+    }
 
 }

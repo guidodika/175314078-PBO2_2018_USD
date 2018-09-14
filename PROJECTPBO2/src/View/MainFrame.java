@@ -7,6 +7,8 @@ package View;
 
 import java.awt.HeadlessException;
 import java.awt.MenuBar;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -16,11 +18,13 @@ import javax.swing.JMenuItem;
  *
  * @author Guido Dika
  */
-public class MainFrame extends JFrame {
+public class MainFrame extends JFrame implements ActionListener{
 
-    private JMenuBar menuBar;
+    private JMenuBar MenuBar;
     private JMenu fileMenu;
     private JMenuItem exitMenuItem;
+    private JMenuItem TambahPasien;
+    private JMenuItem TambahAntrian;
 
     public MainFrame() throws HeadlessException {
         init();
@@ -28,16 +32,47 @@ public class MainFrame extends JFrame {
 
     public void init() {
         // buat menu bar
-        menuBar = new JMenuBar();
-        // set Titile
-        this.setTitle("Main Frame");
-        // buat menu
-        fileMenu = new JMenu("File");
-        exitMenuItem = new JMenuItem("exit");
-        fileMenu.add(exitMenuItem);
-        menuBar.add(fileMenu);
+        MenuBar = new JMenuBar();
+        fileMenu = new JMenu("Pasien");
         
-        this.setJMenuBar(menuBar);
-    }
+        MenuBar.add(MenuBar);
+        this.setJMenuBar(MenuBar);
+        
+//        this.setTitle("Main Frame");
+        
+        // buat menu
+        exitMenuItem = new JMenuItem("Exit");
+        TambahPasien = new JMenuItem("Tambah Pasien Baru");
+        TambahAntrian = new JMenuItem("Tambah Antrian");
 
+        fileMenu.add(TambahPasien);
+        fileMenu.add(TambahAntrian);
+        fileMenu.add(exitMenuItem);
+        MenuBar.add(fileMenu);
+
+        exitMenuItem.addActionListener(this);
+        TambahPasien.addActionListener(this);
+        TambahAntrian.addActionListener(this);
+    }
+    
+     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == exitMenuItem) {
+            System.exit(0);
+        }
+        if (e.getSource() == TambahPasien) {
+            TambahPasienBaruDialog tampil = new TambahPasienBaruDialog();
+            tampil.setSize(300, 400);
+            tampil.setVisible(true);
+        }
+        if (e.getSource() == TambahAntrian) {
+            DaftarAntrianDialog tampil = new DaftarAntrianDialog();
+            tampil.setSize(300, 400);
+            tampil.setVisible(true);
+        }
 }
+        
+        
+       
+}
+
+

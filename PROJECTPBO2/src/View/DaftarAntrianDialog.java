@@ -9,6 +9,9 @@ package View;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JTextField;
 
 /**
@@ -17,7 +20,7 @@ import javax.swing.JTextField;
  */
 public class DaftarAntrianDialog extends JDialog {
 
-        
+   
     private JLabel judulLabel;
     private JLabel namaLabel;
     private JLabel nomorRekamMedisLabel;
@@ -39,6 +42,8 @@ public class DaftarAntrianDialog extends JDialog {
 
     public void init() {
         this.setLayout(null);
+        
+       
         
         //buat judul label//
         judulLabel = new JLabel("Daftar Antrian Dialog");
@@ -84,6 +89,8 @@ public class DaftarAntrianDialog extends JDialog {
         this.add(saveButton);
         
     }
+    
+    
 }
 
 
