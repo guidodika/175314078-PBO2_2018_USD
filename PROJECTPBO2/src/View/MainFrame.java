@@ -5,18 +5,20 @@
  */
 package View;
 
+import java.awt.Font;
 import java.awt.HeadlessException;
 import java.awt.MenuBar;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 /**
  *
- * @author Guido Dika
+ * @author Guido Dika Firguston
  */
 public class MainFrame extends JFrame implements ActionListener{
 
@@ -25,6 +27,7 @@ public class MainFrame extends JFrame implements ActionListener{
     private JMenuItem exitMenuItem;
     private JMenuItem TambahPasien;
     private JMenuItem TambahAntrian;
+    private JLabel teks;
 
     public MainFrame() throws HeadlessException {
         init();
@@ -35,7 +38,7 @@ public class MainFrame extends JFrame implements ActionListener{
         MenuBar = new JMenuBar();
         fileMenu = new JMenu("Pasien");
         
-        MenuBar.add(MenuBar);
+        MenuBar.add(fileMenu);
         this.setJMenuBar(MenuBar);
         
 //        this.setTitle("Main Frame");
@@ -53,6 +56,7 @@ public class MainFrame extends JFrame implements ActionListener{
         exitMenuItem.addActionListener(this);
         TambahPasien.addActionListener(this);
         TambahAntrian.addActionListener(this);
+        
     }
     
      public void actionPerformed(ActionEvent e) {
@@ -65,7 +69,7 @@ public class MainFrame extends JFrame implements ActionListener{
             tampil.setVisible(true);
         }
         if (e.getSource() == TambahAntrian) {
-            DaftarAntrianDialog tampil = new DaftarAntrianDialog();
+            TambahAntrianDialog tampil = new TambahAntrianDialog();
             tampil.setSize(300, 400);
             tampil.setVisible(true);
         }

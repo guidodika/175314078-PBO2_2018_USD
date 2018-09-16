@@ -6,18 +6,23 @@
 package Test;
 
 import View.MainFrame;
+import View.TambahAntrianDialog;
+import View.TambahPasienBaruDialog;
 import javax.swing.JFrame;
 
 /**
  *
- * @author Guido Dika
+ * @author Guido Dika Firguston
  */
 public class TestMainFrame {
     public static void main(String[] args) {
-       MainFrame tampil = new MainFrame();
-        tampil.setSize(300, 400);
+        MainFrame tampil = new MainFrame();
+        tampil.setSize(400, 500);
         tampil.setVisible(true);
         tampil.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+       
+        
 }
     }
 

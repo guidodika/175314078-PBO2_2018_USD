@@ -23,9 +23,8 @@ public class Pasien {
         private int bulanLahir;
         private int tahunLahir;
         private String nik;
-        public ArrayList<Pasien> daftarPasienKlinik = new ArrayList<Pasien>();
-        private final int JUM_MAX_PASIEN=10;
-        private int jumlahPasien=0;
+        public static ArrayList<Pasien> daftarPasienKlinik = new ArrayList<Pasien>();
+      
         
 
         /**Merupakan kontruktor dari class Pasien dengan parameter nama
@@ -52,21 +51,20 @@ public class Pasien {
          //To change body of generated methods, choose Tools | Templates.
     }
         
-        public void tambahPasienBaru(Pasien pasien) throws Exception{
-            if(jumlahPasien<JUM_MAX_PASIEN){
-                 pasien.getDaftarPasienKlinik().add(pasien);
-                 jumlahPasien++;
-            } else {
-                throw new Exception("Penuh");
-            }
-            
-           
-            
-        }
+        public static void tambahPasienBaru(Pasien pasien) {
+        daftarPasienKlinik.add(pasien);
+    }
         
-        public Pasien cariPasien(String noRekamMedis){
-            return daftarPasienKlinik.get(noRekamMedis);
+          public static Pasien cariPasien(String noRM) {
+              
+            for (int i = 0; i < daftarPasienKlinik.size(); i++) {
             
+            if (noRM == null ? daftarPasienKlinik.get(i).getNomorRekamMedis() == null
+                    : noRM.equals(daftarPasienKlinik.get(i).getNomorRekamMedis())) {
+                return daftarPasienKlinik.get(i);
+            }
+        }
+            return null;     
         }
 
     /**Fungsi ini digunakan untuk memanggil nama pasien
@@ -110,13 +108,17 @@ public class Pasien {
      * exception.
      * @param nomorRekamMedis the nomorRekamMedis to set
      */
-    public void setNomorRekamMedis(String nomorRekamMedis) throws Exception
-    {
-        if (nomorRekamMedis.length() <= 11 && nomorRekamMedis.length() >= 6 ) {
-            this.nomorRekamMedis = nomorRekamMedis;
-        } else {
-            throw new Exception("SALAH,\n maksimal 11 karakter dan minimal 6 karakter");
-}
+//    public void setNomorRekamMedis(String nomorRekamMedis) throws Exception
+//    {
+//        if (nomorRekamMedis.length() <= 11 && nomorRekamMedis.length() >= 6 ) {
+//            this.nomorRekamMedis = nomorRekamMedis;
+//        } else {
+//            throw new Exception("SALAH,\n maksimal 11 karakter dan minimal 6 karakter");
+//}
+//    }
+    
+    public void setNomorRekamMedis(String nomorRekamMedis){
+        this.nomorRekamMedis = nomorRekamMedis;
     }
 
     /**Fungsi ini digunakan untuk memanggil tempat lahir pasien

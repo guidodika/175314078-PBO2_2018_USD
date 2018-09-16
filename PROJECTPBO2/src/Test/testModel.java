@@ -46,5 +46,5 @@ public class testModel {
         System.out.println("Nama Hasil Pencarian = "+cari.getNama());
 }
     }
-}
+
 
