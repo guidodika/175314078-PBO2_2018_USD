@@ -5,7 +5,7 @@
  */
 package Test;
 
-import model.AntrianPasien;
+import model.AntrianKlinik;
 import model.Dokter;
 import model.Pasien;
 

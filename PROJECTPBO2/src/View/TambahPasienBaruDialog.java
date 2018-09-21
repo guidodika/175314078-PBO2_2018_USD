@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
-import model.AntrianPasien;
+import model.AntrianKlinik;
 import model.Pasien;
 
 /**
