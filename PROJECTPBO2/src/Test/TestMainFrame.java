@@ -17,7 +17,7 @@ import javax.swing.JFrame;
 public class TestMainFrame {
     public static void main(String[] args) {
         MainFrame tampil = new MainFrame();
-        tampil.setSize(400, 500);
+        tampil.setSize(500, 600);
         tampil.setVisible(true);
         tampil.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
