@@ -35,7 +35,7 @@ public class Dokter {
         return nomorPegawai;
     }
 
-    /** Fungsi ini digunakan untuk set Nomor Pegawai dengan ketentuan panjang nomor 
+    /** method ini digunakan untuk set Nomor Pegawai dengan ketentuan panjang nomor 
      * pegawai harus sama dengan 5. Jika tidak maka
      * akan mengalami kesalahan yang berakibat terjadi kesalahan pada program sehingga akan muncul 
      * pesan exception. 
@@ -49,56 +49,56 @@ public class Dokter {
         }
     }
 
-    /**Fungsi ini digunakan untuk memanggil nama dokter
+    /**method ini digunakan untuk memanggil nama dokter
      * @return the nama
      */
     public String getNama() {
         return nama;
     }
 
-    /**Fungsi ini digunakan untuk mengatur nama dokter
+    /**method ini digunakan untuk mengatur nama dokter
      * @param nama the nama to set
      */
     public void setNama(String nama) {
         this.nama = nama;
     }
 
-    /**Fungsi ini digunakan untuk memanggil alamat dokter
+    /**method ini digunakan untuk memanggil alamat dokter
      * @return the alamat
      */
     public String getAlamat() {
         return alamat;
     }
 
-    /**Fungsi ini digunakan untuk mengatur alamat dokter
+    /**method ini digunakan untuk mengatur alamat dokter
      * @param alamat the alamat to set
      */
     public void setAlamat(String alamat) {
         this.alamat = alamat;
     }
 
-    /**Fungsi ini digunakan untuk memanggil tempat lahir dokter
+    /**method ini digunakan untuk memanggil tempat lahir dokter
      * @return the tempatLahir
      */
     public String getTempatLahir() {
         return tempatLahir;
     }
 
-    /**Fungsi ini digunakan untuk mengatur tempat lahir dokter
+    /**method ini digunakan untuk mengatur tempat lahir dokter
      * @param tempatLahir the tempatLahir to set
      */
     public void setTempatLahir(String tempatLahir) {
         this.tempatLahir = tempatLahir;
     }
 
-    /**Fungsi ini digunakan untuk memanggil tanggal lahir dokter
+    /**method ini digunakan untuk memanggil tanggal lahir dokter
      * @return the tanggalLahir
      */
     public int getTanggalLahir() {
         return tanggalLahir;
     }
 
-    /** Fungsi ini digunakan untuk set Tanggal Lahir dengan ketentuan 
+    /**method ini digunakan untuk set Tanggal Lahir dengan ketentuan 
      * tanggal lahir harus lebih besar dari 0 atau kurang dari sama dengan 31. Jika tidak maka
      * akan mengalami kesalahan yang berakibat terjadi kesalahan pada program sehingga akan muncul 
      * pesan exception. 
@@ -116,14 +116,14 @@ public class Dokter {
             throw new Exception("SALAH,\ntidak ada tanggal 0");
         }
 }
-     /**Fungsi ini digunakan untuk memanggil bulan lahir dokter
+     /**method ini digunakan untuk memanggil bulan lahir dokter
      * @return the bulanLahir
      */
     public int getBulanLahir() {
         return bulanLahir;
     }
 
-    /**Fungsi ini digunakan untuk set bulan Lahir dengan ketentuan 
+    /**method ini digunakan untuk set bulan Lahir dengan ketentuan 
      * bulan lahir harus lebih besar dari 0 atau kurang 13. Jika tidak maka
      * akan mengalami kesalahan yang berakibat terjadi kesalahan pada program sehingga akan muncul 
      * pesan exception. 
@@ -139,14 +139,14 @@ public class Dokter {
             throw new Exception("SALAH, /ntidak ada bulan lahir ke-0 atau kurang dari 0");
     }
 
-    /**Fungsi ini digunakan untuk memanggil tahun lahir dokter
+    /**method ini digunakan untuk memanggil tahun lahir dokter
      * @return the tahunLahir
      */
     public int getTahunLahir() {
         return tahunLahir;
     }
 
-    /**Fungsi ini digunakan untuk set tahun Lahir dengan ketentuan 
+    /**method ini digunakan untuk set tahun Lahir dengan ketentuan 
      * tahun lahir harus lebih besar dari 0. Jika tidak maka
      * akan mengalami kesalahan yang berakibat terjadi kesalahan pada program sehingga akan muncul 
      * pesan exception. 

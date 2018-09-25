@@ -11,7 +11,7 @@ import static model.Pasien.daftarPasienKlinik;
 
 /**
  *
- * @author My Computer
+ * @author Guido Dika Firguston
  */
 public class AntrianKlinik {
     
@@ -24,18 +24,56 @@ public class AntrianKlinik {
     public static ArrayList<AntrianKlinik> daftarAntrian = new ArrayList<AntrianKlinik>();
     
     
+    /**
+     * Merupakan constructor dari class AntrianKlinik
+     */
     public AntrianKlinik() {
          
     }
-     
-    public static int cariAntrian(
-            int tanggal,
-            int bulan,
-            int tahun,
-            Klinik klinik) {
-        return -1; // index list
+   
+    /**
+     * Method cari pasien digunakan untuk mencari pasien dengan cara pencarian di dalam list daftarPasien 
+     * yang berada di dalam list daftarAntrian
+     * @param noRM
+     * @return 
+     */
+    public static Pasien CariPasien(String noRM) {
+        for (int i = 0; i < daftarAntrian.size(); i++) {
+            if (daftarAntrian.get(i).getDaftarPasien().get(i).getNomorRekamMedis().equalsIgnoreCase(noRM)) {
+                return daftarAntrian.get(i).getDaftarPasien().get(i);
+            }
+        }
+        return null;
 }
-    
+     /**
+      * Method ini digunakan untuk mencari antrian dengan cara membandingkan 
+      * @param tanggal
+      * @param bulan
+      * @param tahun
+      * @param klinik
+      * @return 
+      */
+      public static int cariAntrian(int tanggal, int bulan, int tahun, Klinik klinik){
+        for (int i = 0; i < daftarAntrian.size(); i++) {
+            if(daftarAntrian.get(i).getTanggalAntrian() == tanggal
+                && daftarAntrian.get(i).getBulanAntrian() == bulan
+                && daftarAntrian.get(i).getTahunAntrian() == tahun
+                && daftarAntrian.get(i).getKlinik().getIdKlinik().equalsIgnoreCase(klinik.getIdKlinik())
+                && daftarAntrian.get(i).getKlinik().getNamaKlinik().equalsIgnoreCase(klinik.getNamaKlinik()))
+            {     
+                return i;
+            }
+    }
+    return -1;
+ } 
+      
+     /**
+      *Method ini digunakan untuk membuat antrian 
+      * @param tanggal
+      * @param bulan
+      * @param tahun
+      * @param klinik 
+      */
     public static void buatAntrian(int tanggal, int bulan, int tahun, Klinik klinik){
         AntrianKlinik antrian = new AntrianKlinik();
         antrian.setTanggalAntrian(tanggal);
@@ -49,8 +87,23 @@ public class AntrianKlinik {
         }
     }
     
-    
-      
+    /**
+     * Method ini digunakan untuk mendaftar pasien
+     * @param pasien
+     * @param tanggal
+     * @param bulan
+     * @param tahun
+     * @param klinik 
+     */
+    public static void daftarPasien(Pasien pasien, int tanggal, int bulan, int tahun, Klinik klinik) {
+        if (cariAntrian(tanggal, bulan, tahun, klinik) >= 0 ) {
+            daftarAntrian.get(cariAntrian(tanggal, bulan, tahun, klinik)).mendaftar(pasien);
+
+        } else {
+            buatAntrian(tanggal, bulan, tahun, klinik);
+            daftarAntrian.get(cariAntrian(tanggal, bulan, tahun, klinik)).mendaftar(pasien);
+        }
+}
     
     /**Fungsi ini digunakan untuk mendaftar pasien baru di nomor antrian
      * 
@@ -58,7 +111,7 @@ public class AntrianKlinik {
      * @throws Exception 
      */
     public void mendaftar(Pasien pasien) {
-        getDaftarPasien().add(pasien);
+        daftarPasienAntri.add(pasien);
     }
     
     /**Fungsi ini digunakan untuk memanggil pasien sesuai nomor antrian pasien
@@ -73,42 +126,6 @@ public class AntrianKlinik {
     }
     
     
-    public Pasien cariPasien(String nomorRekamMedis, int tanggal, int bulan, int tahun){
-        for (int i = 0; i < daftarPasienKlinik.size(); i++) {
-            
-            if (nomorRekamMedis == null ? daftarPasienKlinik.get(i).getNomorRekamMedis() == null
-                    : nomorRekamMedis.equals(daftarPasienKlinik.get(i).getNomorRekamMedis())) {
-                return daftarPasienKlinik.get(i);
-            }
-        }
-            return null;  
-    }
-    
-    
-    
-//    public void buatAntrian(int tanggal, int bulan, int tahun, Klinik klinik){
-//        
-//    }
-//   
-    
-    
-    public static AntrianKlinik cariAntrian(int tanggal, int bulan, int tahun, Klinik klinik){
-        for (int i = 0; i < daftarAntrian.size(); i++) {
-            if(daftarAntrian.get(i).getTanggalAntrian() == tanggal
-                && daftarAntrian.get(i).getBulanAntrian() == bulan
-                && daftarAntrian.get(i).getTahunAntrian() == tahun
-                && daftarAntrian.get(i).getKlinik().getIdKlinik().equalsIgnoreCase(klinik.getIdKlinik())
-                && daftarAntrian.get(i).getKlinik().getNamaKlinik().equalsIgnoreCase(klinik.getNamaKlinik()))
-            {     
-                return daftarAntrian.get(i);
-            }
-    }
-    return null;
- } 
-    
-    
-
-  
     /**Fungsi ini digunakan untuk memanggil tanggal antrian
      * @return the tanggalAntrian
      */
@@ -183,14 +200,10 @@ public class AntrianKlinik {
     public void setDaftarPasien(ArrayList<Pasien> daftarPasien) {
         this.daftarPasienAntri = daftarPasien;
     }
-
-
-    /**
-     * @return the klinik
-     */
+    
     
     public String toString(){
-        return String.valueOf(tahunAntrian)+
+        return String.valueOf(tahunAntrian)+  
                 String.valueOf(bulanAntrian)+
                 String.valueOf(tanggalAntrian)+
                 klinik.getIdKlinik()+
