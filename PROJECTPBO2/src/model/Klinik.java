@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author jarkom
+ * @author Guido Dika Firguston
  */
 public class Klinik {
     

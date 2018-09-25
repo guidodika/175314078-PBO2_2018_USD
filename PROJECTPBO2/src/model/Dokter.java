@@ -9,7 +9,7 @@ package model;
 
 /**
  *
- * @author My Computer
+ * @author Guido Dika Firguston
  */
 public class Dokter {
     private String nomorPegawai;

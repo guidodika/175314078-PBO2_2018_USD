@@ -12,7 +12,7 @@ import java.util.Date;
 
 /**
  *
- * @author My Computer
+ * @author Guido Dika Firguston
  */
 public class Pasien {
         private String nama;
