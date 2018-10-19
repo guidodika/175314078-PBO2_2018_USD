@@ -17,7 +17,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import model.Pasien;
-import static model.Pasien.daftarPasienKlinik;
+import static model.Pasien.daftarPasien;
+
 
 /**
  *
@@ -112,14 +113,14 @@ public class TambahAntrianDialog extends JDialog implements ActionListener {
             
             Pasien cari = Pasien.cariPasien(nomorRekamMedisText.getText());
             
-            for (int i = 0; i < Pasien.daftarPasienKlinik.size(); i++) {
+            for (int i = 0; i < Pasien.daftarPasien.size(); i++) {
             
-                if (cari == Pasien.daftarPasienKlinik.get(i)) {
+                if (cari == Pasien.daftarPasien.get(i)) {
             
                     JOptionPane.showMessageDialog(null, "Nomor Antrian Anda : " + (i + 1) + "\n" +
-                    "Nama Anda : " + daftarPasienKlinik.get(i).getNama() + "\n" +
-                    "Alamat Anda : " + daftarPasienKlinik.get(i).getAlamat() + "\n" +
-                    "Nomor Rekam Medis Anda : " + daftarPasienKlinik.get(i).getNomorRekamMedis());
+                    "Nama Anda : " + daftarPasien.get(i).getNama() + "\n" +
+                    "Alamat Anda : " + daftarPasien.get(i).getAlamat() + "\n" +
+                    "Nomor Rekam Medis Anda : " + daftarPasien.get(i).getNomorRekamMedis());
             
                     this.dispose();
                 }

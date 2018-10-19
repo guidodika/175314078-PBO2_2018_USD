@@ -3,19 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package model;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
- * @author Guido Dika Firguston
+ * @author admin
  */
 public class Pasien {
-        private String nama;
+
+    private String nama;
         private String alamat;
         private String nomorRekamMedis;
         private String tempatLahir;
@@ -23,7 +32,7 @@ public class Pasien {
         private int bulanLahir;
         private int tahunLahir;
         private String nik;
-        public static ArrayList<Pasien> daftarPasienKlinik = new ArrayList<Pasien>();
+        public static ArrayList<Pasien> daftarPasien = new ArrayList<Pasien>();
       
         
 
@@ -52,16 +61,16 @@ public class Pasien {
     }
         
         public static void tambahPasienBaru(Pasien pasien) {
-        daftarPasienKlinik.add(pasien);
+        daftarPasien.add(pasien);
     }
         
           public static Pasien cariPasien(String noRM) {
               
-            for (int i = 0; i < daftarPasienKlinik.size(); i++) {
+            for (int i = 0; i < daftarPasien.size(); i++) {
             
-            if (noRM == null ? daftarPasienKlinik.get(i).getNomorRekamMedis() == null
-                    : noRM.equals(daftarPasienKlinik.get(i).getNomorRekamMedis())) {
-                return daftarPasienKlinik.get(i);
+            if (noRM == null ? daftarPasien.get(i).getNomorRekamMedis() == null
+                    : noRM.equals(daftarPasien.get(i).getNomorRekamMedis())) {
+                return daftarPasien.get(i);
             }
         }
             return null;     
@@ -230,17 +239,69 @@ public class Pasien {
     }
 
     /**
-     * @return the daftarPasienKlinik
+     * @return the daftarPasien
      */
-    public ArrayList<Pasien> getDaftarPasienKlinik() {
-        return daftarPasienKlinik;
+    public static ArrayList<Pasien> getDaftarPasien() {
+        return daftarPasien;
     }
 
     /**
-     * @param daftarPasienKlinik the daftarPasienKlinik to set
+     * @param daftarPasienKlinik the daftarPasien to set
      */
-    public void setDaftarPasienKlinik(ArrayList<Pasien> daftarPasienKlinik) {
-        this.daftarPasienKlinik = daftarPasienKlinik;
+    public void setDaftarPasien(ArrayList<Pasien> daftarPasien) {
+        this.daftarPasien = daftarPasien;
+    }
+    
+    public static void simpanDaftarPasien(File file) throws IOException{
+         try {
+            FileOutputStream fos = new FileOutputStream(file);
+            for (int i = 0; i < daftarPasien.size(); i++) {
+                String data = daftarPasien.get(i).toString();
+                fos.write(data.getBytes());
+            }
+            fos.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+}
+    }
+    
+    
+         public static void bacaDaftarPasien(File file) throws IOException{
+            FileInputStream fis = null;
+             try {
+                 boolean isNomorRekamMedis = false;
+                 boolean isNama = false;
+                 boolean isAlamat = false;
+                 
+            String hasilBaca="";
+            fis = new FileInputStream(file);
+            int dataInt;
+            
+            while((dataInt=fis.read()) !=-1){
+                
+                if((char) dataInt != '\n'){
+                    hasilBaca = hasilBaca + (char) dataInt;
+                } else {
+                    Pasien temp = new Pasien();
+                    temp.setNama(hasilBaca);
+                    tambahPasienBaru(temp);
+                    hasilBaca = "";
+                }
+                
+            }
+            System.out.println(hasilBaca);
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+}
+         }
+         
+         public String toString(){
+             return nomorRekamMedis + "\t" + nama + "\t" + alamat + "\n";
+         }
     }
 
-}
