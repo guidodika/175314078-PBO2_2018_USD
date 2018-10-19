@@ -269,33 +269,54 @@ public class Pasien {
     
     
          public static void bacaDaftarPasien(File file) throws IOException{
-            FileInputStream fis = null;
-             try {
-                 boolean isNomorRekamMedis = false;
-                 boolean isNama = false;
-                 boolean isAlamat = false;
-                 
+            FileInputStream fis = new FileInputStream(file);
+             
             String hasilBaca = "";
-            fis = new FileInputStream(file);
+            
             int dataInt;
+            
+            int counter = 1;
+            
+            Pasien temp = new Pasien();
             
             while((dataInt=fis.read()) !=-1){
                 
-                if((char) dataInt != '\t' && isNama == false){
+                if((char) dataInt != '\n'){
+                    
+                    if((char) dataInt != '\t'){
+                        
                     hasilBaca = hasilBaca + (char) dataInt;
-                } else {
-                    isNama = true;
-                    Pasien temp = new Pasien();
+                    
+                    } else {
+                        
+                        if (counter == 1){
+                            temp.setNomorRekamMedis(hasilBaca);
+                        } else if(counter == 2){
+                            temp.setNama(hasilBaca);
+                        } else {
+                            temp.setAlamat(hasilBaca);
+                    counter = 0;
+                } 
+                    counter++;
+                
+                    }    else 
+                    
+                    
+                    {
+                        
+                    temp.setNomorRekamMedis(hasilBaca);
                     temp.setNama(hasilBaca);
+                    temp.setAlamat(hasilBaca);
                     hasilBaca = "";
                     tambahPasienBaru(temp);
                     
-                }
+                    }
                 
             }
-            System.out.println(hasilBaca);
             
-        } catch (FileNotFoundException ex) {
+            fis.close();
+         
+            } catch (FileNotFoundException ex) {
             Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
