@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author admin
+ * @author Guido Dika
  */
 public class Pasien {
 
@@ -275,19 +275,21 @@ public class Pasien {
                  boolean isNama = false;
                  boolean isAlamat = false;
                  
-            String hasilBaca="";
+            String hasilBaca = "";
             fis = new FileInputStream(file);
             int dataInt;
             
             while((dataInt=fis.read()) !=-1){
                 
-                if((char) dataInt != '\n'){
+                if((char) dataInt != '\t' && isNama == false){
                     hasilBaca = hasilBaca + (char) dataInt;
                 } else {
+                    isNama = true;
                     Pasien temp = new Pasien();
                     temp.setNama(hasilBaca);
-                    tambahPasienBaru(temp);
                     hasilBaca = "";
+                    tambahPasienBaru(temp);
+                    
                 }
                 
             }

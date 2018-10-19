@@ -21,7 +21,7 @@ public class TestStreaming1 {
         FileInputStream fis = null;
         try {
             File file = new File("test.txt"); // siapkan file sumber
-            String hasilBaca="";
+            String hasilBaca = "";
             fis = new FileInputStream(file);
             int dataInt;
             while((dataInt=fis.read()) !=-1){
