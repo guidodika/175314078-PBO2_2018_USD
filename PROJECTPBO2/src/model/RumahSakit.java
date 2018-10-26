@@ -28,12 +28,13 @@ import static model.Pasien.tambahPasienBaru;
  * @author jarkom
  */
 public class RumahSakit implements Serializable {
+
     private String nama;
     private String alamat;
     private ArrayList<AntrianKlinik> daftarAntrianKlinik = new ArrayList<AntrianKlinik>();
     private ArrayList<Klinik> daftarKlinik = new ArrayList<Klinik>();
     private ArrayList<Pasien> daftarPasien = new ArrayList<Pasien>();
-    
+
     public RumahSakit() {
     }
 
@@ -41,26 +42,25 @@ public class RumahSakit implements Serializable {
         this.nama = nama;
         this.alamat = alamat;
     }
-    
-    
+
     public void tambahPasienBaru(Pasien pasien) {
         getDaftarPasien().add(pasien);
     }
-        
-          public Pasien cariPasien(String noRM) {
-              
-            for (int i = 0; i < getDaftarPasien().size(); i++) {
-            
+
+    public Pasien cariPasien(String noRM) {
+
+        for (int i = 0; i < getDaftarPasien().size(); i++) {
+
             if (noRM == null ? getDaftarPasien().get(i).getNomorRekamMedis() == null
                     : noRM.equals(getDaftarPasien().get(i).getNomorRekamMedis())) {
                 return getDaftarPasien().get(i);
             }
         }
-            return null;     
-        }
-          
-          public void simpanDaftarPasien(File file) throws IOException{
-         try {
+        return null;
+    }
+
+    public void simpanDaftarPasien(File file) throws IOException {
+        try {
             FileOutputStream fos = new FileOutputStream(file);
             for (int i = 0; i < getDaftarPasien().size(); i++) {
                 String data = getDaftarPasien().get(i).toString();
@@ -71,14 +71,12 @@ public class RumahSakit implements Serializable {
             Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
-}
+        }
     }
-    
-    
-        public void bacaDaftarPasien(File file) {
+
+    public void bacaDaftarPasien(File file) {
         FileInputStream fis = null;
         try {
-
             String hasilBaca = "";
             fis = new FileInputStream(file);
             int dataInt;
@@ -121,18 +119,18 @@ public class RumahSakit implements Serializable {
                     temp = new Pasien();
                 }
             }
-           fis.close();
+            fis.close();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-}
-        
-        public void simpanObjekRumahSakit(File file){
-            FileOutputStream fos = null;
-            ObjectOutputStream oos = null;
-            try {
+        }
+    }
+
+    public void simpanObjekRumahSakit(File file) {
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+        try {
             fos = new FileOutputStream(file);
             oos = new ObjectOutputStream(fos);
             oos.writeObject(this);
@@ -145,85 +143,82 @@ public class RumahSakit implements Serializable {
             Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
-}
-            
         }
-        
-        public void bacaObjekRumahSakit(File file) throws ClassNotFoundException{
-            FileInputStream fis = null;
-            ObjectInputStream ois = null;
-            try {
+
+    }
+
+    public void bacaObjekRumahSakit(File file) throws ClassNotFoundException {
+        FileInputStream fis = null;
+        ObjectInputStream ois = null;
+        try {
             fis = new FileInputStream(file);
             ois = new ObjectInputStream(fis);
             RumahSakit rs = (RumahSakit) ois.readObject();
             this.setNama(rs.getNama());
             this.setAlamat(rs.getAlamat());
             this.setDaftarPasien(rs.getDaftarPasien());
-            
-           } catch (FileNotFoundException ex) {
+
+        } catch (FileNotFoundException ex) {
             Logger.getLogger(RumahSakit.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(RumahSakit.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(RumahSakit.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-     }
-                
-                
-         public void tambahKlinik(Klinik klinik){
+
+    }
+
+    public void tambahKlinik(Klinik klinik) {
         getDaftarKlinik().add(klinik);
     }
-          
-    public Klinik cariKlinik(String namaKlinik){
-        for (int i = 0; i < getDaftarKlinik().size(); i++) 
-        {
-            if(getDaftarKlinik().get(i).
-                    getNamaKlinik().equalsIgnoreCase(namaKlinik))
-            {
+
+    public Klinik cariKlinik(String namaKlinik) {
+        for (int i = 0; i < getDaftarKlinik().size(); i++) {
+            if (getDaftarKlinik().get(i).
+                    getNamaKlinik().equalsIgnoreCase(namaKlinik)) {
                 return getDaftarKlinik().get(i);
             }
-            
+
         }
         return null;
     }
-    
-    public void buatAntrian(int tanggal, int bulan, int tahun, Klinik klinik){
+
+    public void buatAntrian(int tanggal, int bulan, int tahun, Klinik klinik) {
         AntrianKlinik antrian = new AntrianKlinik();
         antrian.setTanggalAntrian(tanggal);
         antrian.setBulanAntrian(bulan);
         antrian.setTahunAntrian(tahun);
         antrian.setKlinik(klinik);
-        if(cariAntrian(tanggal, bulan, tahun, klinik) < 0){
-        daftarAntrian.add(antrian);
-        }else{
+        if (cariAntrian(tanggal, bulan, tahun, klinik) < 0) {
+            daftarAntrian.add(antrian);
+        } else {
             System.out.println("Antrian sudah ada");
         }
     }
-    
-    public int cariAntrian(int tanggal, int bulan, int tahun, Klinik klinik){
+
+    public int cariAntrian(int tanggal, int bulan, int tahun, Klinik klinik) {
         for (int i = 0; i < daftarAntrian.size(); i++) {
-            if(daftarAntrian.get(i).getTanggalAntrian() == tanggal
-                && daftarAntrian.get(i).getBulanAntrian() == bulan
-                && daftarAntrian.get(i).getTahunAntrian() == tahun
-                && daftarAntrian.get(i).getKlinik().getIdKlinik().equalsIgnoreCase(klinik.getIdKlinik())
-                && daftarAntrian.get(i).getKlinik().getNamaKlinik().equalsIgnoreCase(klinik.getNamaKlinik()))
-            {     
+            if (daftarAntrian.get(i).getTanggalAntrian() == tanggal
+                    && daftarAntrian.get(i).getBulanAntrian() == bulan
+                    && daftarAntrian.get(i).getTahunAntrian() == tahun
+                    && daftarAntrian.get(i).getKlinik().getIdKlinik().equalsIgnoreCase(klinik.getIdKlinik())
+                    && daftarAntrian.get(i).getKlinik().getNamaKlinik().equalsIgnoreCase(klinik.getNamaKlinik())) {
                 return i;
             }
+        }
+        return -1;
     }
-    return -1;
- } 
+
     public void daftarPasien(Pasien pasien, int tanggal, int bulan, int tahun, Klinik klinik) {
-        if (cariAntrian(tanggal, bulan, tahun, klinik) >= 0 ) {
+        if (cariAntrian(tanggal, bulan, tahun, klinik) >= 0) {
             daftarAntrian.get(cariAntrian(tanggal, bulan, tahun, klinik)).mendaftar(pasien);
 
         } else {
             buatAntrian(tanggal, bulan, tahun, klinik);
             daftarAntrian.get(cariAntrian(tanggal, bulan, tahun, klinik)).mendaftar(pasien);
         }
-}
-    
+    }
+
     /**
      * @return the nama
      */
@@ -293,6 +288,5 @@ public class RumahSakit implements Serializable {
     public void setDaftarPasien(ArrayList<Pasien> daftarPasien) {
         this.daftarPasien = daftarPasien;
     }
-    
-    
+
 }
