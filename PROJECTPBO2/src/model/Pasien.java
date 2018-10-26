@@ -248,8 +248,8 @@ public class Pasien {
     /**
      * @param daftarPasienKlinik the daftarPasien to set
      */
-    public void setDaftarPasien(ArrayList<Pasien> daftarPasien) {
-        this.daftarPasien = daftarPasien;
+    public static void setDaftarPasien(ArrayList<Pasien> daftarPasien) {
+        Pasien.daftarPasien = daftarPasien;
     }
     
     public static void simpanDaftarPasien(File file) throws IOException{
@@ -268,60 +268,59 @@ public class Pasien {
     }
     
     
-         public static void bacaDaftarPasien(File file) throws IOException{
-            FileInputStream fis = new FileInputStream(file);
-             
+        public static void bacaDaftarPasien(File file) {
+        FileInputStream fis = null;
+        try {
+
             String hasilBaca = "";
-            
+            fis = new FileInputStream(file);
             int dataInt;
-            
-            int counter = 1;
-            
+            boolean noRM = false;
+            boolean nama = false;
+            boolean alamat = false;
+            String n;
+            String RM;
+            String ala;
             Pasien temp = new Pasien();
-            
-            while((dataInt=fis.read()) !=-1){
-                
-                if((char) dataInt != '\n'){
-                    
-                    if((char) dataInt != '\t'){
-                        
-                    hasilBaca = hasilBaca + (char) dataInt;
-                    
-                    } else {
-                        
-                        if (counter == 1){
-                            temp.setNomorRekamMedis(hasilBaca);
-                        } else if(counter == 2){
-                            temp.setNama(hasilBaca);
-                        } else {
-                            temp.setAlamat(hasilBaca);
-                    counter = 0;
-                } 
-                    counter++;
-                
-                    }    else 
-                    
-                    
-                    {
-                        
-                    temp.setNomorRekamMedis(hasilBaca);
-                    temp.setNama(hasilBaca);
+            while ((dataInt = fis.read()) != -1) {
+                if ((char) dataInt != '\n') {
+                    if ((char) dataInt != '\t' && noRM == false && nama == false && alamat == false) {
+                        hasilBaca = hasilBaca + (char) dataInt;
+                    } else if ((char) dataInt == '\t' && noRM == false && nama == false && alamat == false) {
+                        noRM = true;
+                        temp.setNomorRekamMedis(hasilBaca);
+                        hasilBaca = "";
+                    } else if ((char) dataInt != '\t' && noRM == true && nama == false && alamat == false) {
+                        hasilBaca = hasilBaca + (char) dataInt;
+                    } else if ((char) dataInt == '\t' && noRM == true && nama == false && alamat == false) {
+                        nama = true;
+                        temp.setNama(hasilBaca);
+                        hasilBaca = "";
+                    } else if ((char) dataInt != '\t' && noRM == true && nama == true && alamat == false) {
+                        hasilBaca = hasilBaca + (char) dataInt;
+                    } else if ((char) dataInt == '\t' && noRM == true && nama == true && alamat == false) {
+                        alamat = true;
+                        temp.setAlamat(hasilBaca);
+                        hasilBaca = "";
+                    }
+                } else {
+                    alamat = true;
                     temp.setAlamat(hasilBaca);
                     hasilBaca = "";
                     tambahPasienBaru(temp);
-                    
-                    }
-                
+                    nama = false;
+                    noRM = false;
+                    alamat = false;
+                    temp = new Pasien();
+                }
             }
-            
-            fis.close();
-         
-            } catch (FileNotFoundException ex) {
+           fis.close();
+        } catch (FileNotFoundException ex) {
             Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+        } 
 }
-         }
          
          public String toString(){
              return nomorRekamMedis + "\t" + nama + "\t" + alamat + "\n";
