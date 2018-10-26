@@ -27,8 +27,9 @@ import static model.Pasien.tambahPasienBaru;
 public class RumahSakit {
     private String nama;
     private String alamat;
-    private static ArrayList<AntrianKlinik> daftarAntrianKlinik = new ArrayList<AntrianKlinik>();
-    private static ArrayList<Klinik> daftarKlinik = new ArrayList<Klinik>();
+    private ArrayList<AntrianKlinik> daftarAntrianKlinik = new ArrayList<AntrianKlinik>();
+    private ArrayList<Klinik> daftarKlinik = new ArrayList<Klinik>();
+    private ArrayList<Pasien> daftarPasien = new ArrayList<Pasien>();
     
     public RumahSakit() {
     }
@@ -39,11 +40,11 @@ public class RumahSakit {
     }
     
     
-    public static void tambahPasienBaru(Pasien pasien) {
+    public void tambahPasienBaru(Pasien pasien) {
         daftarPasien.add(pasien);
     }
         
-          public static Pasien cariPasien(String noRM) {
+          public Pasien cariPasien(String noRM) {
               
             for (int i = 0; i < daftarPasien.size(); i++) {
             
@@ -55,7 +56,7 @@ public class RumahSakit {
             return null;     
         }
           
-          public static void simpanDaftarPasien(File file) throws IOException{
+          public void simpanDaftarPasien(File file) throws IOException{
          try {
             FileOutputStream fos = new FileOutputStream(file);
             for (int i = 0; i < daftarPasien.size(); i++) {
@@ -71,7 +72,7 @@ public class RumahSakit {
     }
     
     
-        public static void bacaDaftarPasien(File file) {
+        public void bacaDaftarPasien(File file) {
         FileInputStream fis = null;
         try {
 
@@ -124,11 +125,21 @@ public class RumahSakit {
             Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
         } 
 }
-         public static void tambahKlinik(Klinik klinik){
+        
+        public void simpanObjekRumahSakit(File file){
+            
+        }
+        
+        public void bacaObjekRumahSakit(File file){
+            
+        }
+                
+                
+         public void tambahKlinik(Klinik klinik){
         getDaftarKlinik().add(klinik);
     }
           
-    public static Klinik cariKlinik(String namaKlinik){
+    public Klinik cariKlinik(String namaKlinik){
         for (int i = 0; i < getDaftarKlinik().size(); i++) 
         {
             if(getDaftarKlinik().get(i).
@@ -141,7 +152,7 @@ public class RumahSakit {
         return null;
     }
     
-    public static void buatAntrian(int tanggal, int bulan, int tahun, Klinik klinik){
+    public void buatAntrian(int tanggal, int bulan, int tahun, Klinik klinik){
         AntrianKlinik antrian = new AntrianKlinik();
         antrian.setTanggalAntrian(tanggal);
         antrian.setBulanAntrian(bulan);
@@ -154,7 +165,7 @@ public class RumahSakit {
         }
     }
     
-    public static int cariAntrian(int tanggal, int bulan, int tahun, Klinik klinik){
+    public int cariAntrian(int tanggal, int bulan, int tahun, Klinik klinik){
         for (int i = 0; i < daftarAntrian.size(); i++) {
             if(daftarAntrian.get(i).getTanggalAntrian() == tanggal
                 && daftarAntrian.get(i).getBulanAntrian() == bulan
@@ -167,7 +178,7 @@ public class RumahSakit {
     }
     return -1;
  } 
-    public static void daftarPasien(Pasien pasien, int tanggal, int bulan, int tahun, Klinik klinik) {
+    public void daftarPasien(Pasien pasien, int tanggal, int bulan, int tahun, Klinik klinik) {
         if (cariAntrian(tanggal, bulan, tahun, klinik) >= 0 ) {
             daftarAntrian.get(cariAntrian(tanggal, bulan, tahun, klinik)).mendaftar(pasien);
 
@@ -208,28 +219,28 @@ public class RumahSakit {
     /**
      * @return the daftarAntrianKlinik
      */
-    public static ArrayList<AntrianKlinik> getDaftarAntrianKlinik() {
+    public ArrayList<AntrianKlinik> getDaftarAntrianKlinik() {
         return daftarAntrianKlinik;
     }
 
     /**
      * @param aDaftarAntrianKlinik the daftarAntrianKlinik to set
      */
-    public static void setDaftarAntrianKlinik(ArrayList<AntrianKlinik> aDaftarAntrianKlinik) {
+    public void setDaftarAntrianKlinik(ArrayList<AntrianKlinik> aDaftarAntrianKlinik) {
         daftarAntrianKlinik = aDaftarAntrianKlinik;
     }
 
     /**
      * @return the daftarKlinik
      */
-    public static ArrayList<Klinik> getDaftarKlinik() {
+    public ArrayList<Klinik> getDaftarKlinik() {
         return daftarKlinik;
     }
 
     /**
      * @param aDaftarKlinik the daftarKlinik to set
      */
-    public static void setDaftarKlinik(ArrayList<Klinik> aDaftarKlinik) {
+    public void setDaftarKlinik(ArrayList<Klinik> aDaftarKlinik) {
         daftarKlinik = aDaftarKlinik;
     }
     
