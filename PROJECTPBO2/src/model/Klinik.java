@@ -5,13 +5,14 @@
  */
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Guido Dika Firguston
  */
-public class Klinik {
+public class Klinik implements Serializable {
     
     public static ArrayList<Klinik> daftarKlinik = new ArrayList<Klinik>();
     

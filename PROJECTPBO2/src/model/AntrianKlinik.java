@@ -6,13 +6,14 @@
 package model;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Guido Dika Firguston
  */
-public class AntrianKlinik {
+public class AntrianKlinik implements Serializable {
     
     
     private int tanggalAntrian;

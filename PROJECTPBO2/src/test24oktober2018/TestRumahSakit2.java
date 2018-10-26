@@ -5,6 +5,7 @@
  */
 package test24oktober2018;
 
+import java.io.File;
 import java.util.ArrayList;
 import model.Pasien;
 import model.RumahSakit;
@@ -14,7 +15,7 @@ import model.RumahSakit;
  * @author admin
  */
 public class TestRumahSakit2 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException {
         RumahSakit rs = new RumahSakit();
         
         rs.bacaObjekRumahSakit(new File("rsku.dat"));

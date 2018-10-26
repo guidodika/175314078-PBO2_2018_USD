@@ -10,6 +10,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,7 +27,7 @@ import static model.Pasien.tambahPasienBaru;
  *
  * @author jarkom
  */
-public class RumahSakit {
+public class RumahSakit implements Serializable {
     private String nama;
     private String alamat;
     private ArrayList<AntrianKlinik> daftarAntrianKlinik = new ArrayList<AntrianKlinik>();
@@ -41,16 +44,16 @@ public class RumahSakit {
     
     
     public void tambahPasienBaru(Pasien pasien) {
-        daftarPasien.add(pasien);
+        getDaftarPasien().add(pasien);
     }
         
           public Pasien cariPasien(String noRM) {
               
-            for (int i = 0; i < daftarPasien.size(); i++) {
+            for (int i = 0; i < getDaftarPasien().size(); i++) {
             
-            if (noRM == null ? daftarPasien.get(i).getNomorRekamMedis() == null
-                    : noRM.equals(daftarPasien.get(i).getNomorRekamMedis())) {
-                return daftarPasien.get(i);
+            if (noRM == null ? getDaftarPasien().get(i).getNomorRekamMedis() == null
+                    : noRM.equals(getDaftarPasien().get(i).getNomorRekamMedis())) {
+                return getDaftarPasien().get(i);
             }
         }
             return null;     
@@ -59,8 +62,8 @@ public class RumahSakit {
           public void simpanDaftarPasien(File file) throws IOException{
          try {
             FileOutputStream fos = new FileOutputStream(file);
-            for (int i = 0; i < daftarPasien.size(); i++) {
-                String data = daftarPasien.get(i).toString();
+            for (int i = 0; i < getDaftarPasien().size(); i++) {
+                String data = getDaftarPasien().get(i).toString();
                 fos.write(data.getBytes());
             }
             fos.close();
@@ -127,12 +130,45 @@ public class RumahSakit {
 }
         
         public void simpanObjekRumahSakit(File file){
+            FileOutputStream fos = null;
+            ObjectOutputStream oos = null;
+            try {
+            fos = new FileOutputStream(file);
+            oos = new ObjectOutputStream(fos);
+            oos.writeObject(this);
+            for (int i = 0; i < getDaftarPasien().size(); i++) {
+                String data = getDaftarPasien().get(i).toString();
+                fos.write(data.getBytes());
+            }
+            fos.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+}
             
         }
         
-        public void bacaObjekRumahSakit(File file){
+        public void bacaObjekRumahSakit(File file) throws ClassNotFoundException{
+            FileInputStream fis = null;
+            ObjectInputStream ois = null;
+            try {
+            fis = new FileInputStream(file);
+            ois = new ObjectInputStream(fis);
+            RumahSakit rs = (RumahSakit) ois.readObject();
+            this.setNama(rs.getNama());
+            this.setAlamat(rs.getAlamat());
+            this.setDaftarPasien(rs.getDaftarPasien());
             
+           } catch (FileNotFoundException ex) {
+            Logger.getLogger(RumahSakit.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(RumahSakit.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(RumahSakit.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+     }
                 
                 
          public void tambahKlinik(Klinik klinik){
@@ -242,6 +278,20 @@ public class RumahSakit {
      */
     public void setDaftarKlinik(ArrayList<Klinik> aDaftarKlinik) {
         daftarKlinik = aDaftarKlinik;
+    }
+
+    /**
+     * @return the daftarPasien
+     */
+    public ArrayList<Pasien> getDaftarPasien() {
+        return daftarPasien;
+    }
+
+    /**
+     * @param daftarPasien the daftarPasien to set
+     */
+    public void setDaftarPasien(ArrayList<Pasien> daftarPasien) {
+        this.daftarPasien = daftarPasien;
     }
     
     

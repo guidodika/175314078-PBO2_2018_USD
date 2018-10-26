@@ -5,13 +5,15 @@
  */
 package model;
 
+import java.io.Serializable;
+
 
 
 /**
  *
  * @author Guido Dika Firguston
  */
-public class Dokter {
+public class Dokter implements Serializable {
     private String nomorPegawai;
     private String nama;
     private String alamat;
